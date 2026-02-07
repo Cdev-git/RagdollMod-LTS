@@ -85,9 +85,9 @@ namespace RagdollMod
         {
             try
             {
-                VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body/TransferrableItemLeftShoulder").gameObject.SetActive(false);
-                VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body/TransferrableItemRightShoulder").gameObject.SetActive(false);
-                VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
+                VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemLeftShoulder").gameObject.SetActive(false);
+                VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemRightShoulder").gameObject.SetActive(false);
+                VRRig.LocalRig.transform.Find("rig/body_pivot/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
 
                 foreach (GameObject Cosmetic in VRRig.LocalRig.cosmetics)
                 {
@@ -104,10 +104,10 @@ namespace RagdollMod
 
         public static void EnableCosmetics()
         {
-            VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body/TransferrableItemLeftShoulder").gameObject.SetActive(true);
-            VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body/TransferrableItemRightShoulder").gameObject.SetActive(true);
+            VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemLeftShoulder").gameObject.SetActive(true);
+            VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemRightShoulder").gameObject.SetActive(true);
 
-            VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
+            VRRig.LocalRig.transform.Find("rig/body_pivot/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
             foreach (GameObject Cosmetic in portedCosmetics)
             {
                 Cosmetic.transform.SetParent(VRRig.LocalRig.mainCamera.transform.Find("HeadCosmetics"), false);
@@ -130,8 +130,8 @@ namespace RagdollMod
             endDeathSoundTime = Time.time + 5.265f;
 
             Ragdoll = LoadAsset("ragdoll");
-            Ragdoll.transform.Find("Stand/Gorilla Rig/body").transform.position = VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body").position;
-            Ragdoll.transform.Find("Stand/Gorilla Rig/body").transform.rotation = VRRig.LocalRig.transform.Find("GorillaPlayerNetworkedRigAnchor/rig/body").rotation;
+            Ragdoll.transform.Find("Stand/Gorilla Rig/body").transform.position = VRRig.LocalRig.transform.Find("rig/body_pivot").position;
+            Ragdoll.transform.Find("Stand/Gorilla Rig/body").transform.rotation = VRRig.LocalRig.transform.Find("rig/body_pivot").rotation;
 
             Ragdoll.transform.Find("Stand/Gorilla Rig/body/shoulder.L/upper_arm.L/forearm.L/hand.L").transform.position = VRRig.LocalRig.leftHand.rigTarget.transform.position;
             Ragdoll.transform.Find("Stand/Gorilla Rig/body/shoulder.L/upper_arm.L/forearm.L/hand.L").transform.rotation = VRRig.LocalRig.leftHand.rigTarget.transform.rotation;

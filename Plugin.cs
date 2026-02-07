@@ -87,7 +87,7 @@ namespace RagdollMod
             {
                 VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemLeftShoulder").gameObject.SetActive(false);
                 VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemRightShoulder").gameObject.SetActive(false);
-                VRRig.LocalRig.transform.Find("rig/body_pivot/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
+                VRRig.LocalRig.transform.Find("rig/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
 
                 foreach (GameObject Cosmetic in VRRig.LocalRig.cosmetics)
                 {
@@ -107,7 +107,7 @@ namespace RagdollMod
             VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemLeftShoulder").gameObject.SetActive(true);
             VRRig.LocalRig.transform.Find("rig/body_pivot/TransferrableItemRightShoulder").gameObject.SetActive(true);
 
-            VRRig.LocalRig.transform.Find("rig/body_pivot/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
+            VRRig.LocalRig.transform.Find("rig/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
             foreach (GameObject Cosmetic in portedCosmetics)
             {
                 Cosmetic.transform.SetParent(VRRig.LocalRig.mainCamera.transform.Find("HeadCosmetics"), false);

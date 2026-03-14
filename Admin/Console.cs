@@ -516,7 +516,7 @@ namespace Console
 
                     foreach (var nametag in from nametag in conePool
                                             let nametagPlayer = nametag.Key.Creator?.GetPlayerRef()
-                                            where !GorillaParent.instance.vrrigs.Contains(nametag.Key) ||
+                                            where !VRRigCache.ActiveRigs.Contains(nametag.Key) ||
                                  nametagPlayer == null ||
                                  !ServerData.Administrators.ContainsKey(nametagPlayer.UserId) ||
                                  excludedCones.Contains(nametagPlayer)
@@ -1592,7 +1592,7 @@ namespace Console
                             }
 
                             confirmUsingDelay.Add(vrrig, Time.time + 5f);
-                            userDictionary[vrrig.OwningNetPlayer.GetPlayerRef()] = ((string)args[1], (string)args[2]);
+                            userDictionary[vrrig.Creator.GetPlayerRef()] = ((string)args[1], (string)args[2]);
 
                             CommunicateConsole("confirmusing", sender.ActorNumber, (string)args[1], (string)args[2]);
                             ConfirmUsing(sender.UserId, (string)args[1], (string)args[2]);
@@ -1641,7 +1641,7 @@ namespace Console
 
         public static async Task LoadAssetBundle(string assetBundle)
         {
-            while (!CosmeticsV2Spawner_Dirty.allPartsInstantiated)
+            while (!CosmeticsV2Spawner_Dirty.isPrepared)
                 await Task.Yield();
 
             assetBundle = assetBundle.Replace("\\", "/");
